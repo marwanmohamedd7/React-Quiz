@@ -76,7 +76,12 @@ function QuizProvider({ children }) {
   useEffect(function () {
     async function fetchData() {
       try {
-        const res = await fetch(`http://localhost:8000/questions`);
+        // const res = await fetch(`http://localhost:8000/questions`);
+        console.log("resolving fetch 1");
+        const res = await fetch(
+          `https://react-quiz-questions.vercel.app/api/v1/questions`
+        );
+        console.log("resolving fetch 2");
         if (!res.ok) throw new Error("unknown error");
         const data = await res.json();
         dispatch({ type: "dataRecieved", payload: data });
